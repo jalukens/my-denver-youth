@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { Sparkles, Loader2 } from 'lucide-react';
 import {
   Sheet,
@@ -28,11 +28,24 @@ export function AiRecommendSheet({ open, onClose }: AiRecommendSheetProps) {
   const [hasSearched, setHasSearched] = useState(false);
   const { lang, t } = useLanguage();
 
-  const { isListening, isSupported, toggleListening } = useSpeechToText({
-    onResult: (text) => {
-      setQuery((prev) => (prev ? prev + ' ' + text : text));
-    },
-  });
+  const { isListening, isSupported, startListening, stopListening, transcript } = useSpeechToText();
+
+  const toggleListening = useCallback(() => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  }, [isListening, startListening, stopListening]);
+
+  // Sync transcript into query
+  const prevTranscript = useRef('');
+  useEffect(() => {
+    if (transcript && transcript !== prevTranscript.current) {
+      prevTranscript.current = transcript;
+      setQuery((prev) => (prev ? prev + ' ' + transcript : transcript));
+    }
+  }, [transcript]);
 
   const handleSearch = useCallback(async () => {
     if (!query.trim()) return;

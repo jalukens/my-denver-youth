@@ -27,8 +27,8 @@ export function RecommendationCard({
 }: RecommendationCardProps) {
   const program = recommendation.program;
   const categoryIcon = getCategoryIcon(program.category);
-  const totalFunding = recommendation.funding.reduce(
-    (sum, f) => sum + f.amount,
+  const totalFunding = recommendation.fundingBreakdown.reduce(
+    (sum: number, f: { name: string; amount: number }) => sum + f.amount,
     0
   );
   const familyCost = Math.max(0, program.cost - totalFunding);
@@ -58,14 +58,14 @@ export function RecommendationCard({
       </div>
 
       {/* Funding breakdown */}
-      {recommendation.funding.length > 0 && (
+      {recommendation.fundingBreakdown.length > 0 && (
         <div className="mt-3 space-y-1">
-          {recommendation.funding.map((f, i) => (
+          {recommendation.fundingBreakdown.map((f: { name: string; amount: number }, i: number) => (
             <div
               key={i}
               className="flex items-center justify-between text-xs"
             >
-              <span className="text-denver-gray-mid">{f.source}</span>
+              <span className="text-denver-gray-mid">{f.name}</span>
               <span className="text-denver-teal font-medium">
                 -{formatCurrency(f.amount)}
               </span>

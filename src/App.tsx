@@ -19,7 +19,7 @@ import CapacityPage from '@/pages/CapacityPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/my-denver-youth">
       <LanguageProvider>
         <AppShell>
           <Routes>

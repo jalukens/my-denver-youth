@@ -15,7 +15,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed md:static bottom-0 left-0 right-0 z-50 bg-white border-t border-denver-gray-soft max-w-2xl mx-auto md:max-w-none md:shrink-0">
-      <div className="flex items-end justify-around px-2 pb-2 pt-1">
+      <div className="flex items-end pb-2 pt-1">
         {navItems.map((item) => {
           const isActive =
             item.path === '/'
@@ -27,11 +27,11 @@ export function BottomNav() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex flex-col items-center gap-0.5 -mt-4"
+                className="flex-1 flex flex-col items-center gap-0.5 -mt-4"
               >
                 <div
                   className={cn(
-                    'w-14 h-14 rounded-full bg-denver-amber flex items-center justify-center',
+                    'w-12 h-12 rounded-full bg-denver-amber flex items-center justify-center',
                     isActive && 'ring-2 ring-denver-amber/30'
                   )}
                   style={{ boxShadow: '0 4px 16px rgba(245,166,35,0.4)' }}
@@ -56,7 +56,7 @@ export function BottomNav() {
             <Link
               key={item.path}
               to={item.path}
-              className="flex flex-col items-center gap-0.5 pt-2"
+              className="flex-1 flex flex-col items-center gap-0.5 pt-2"
             >
               <item.icon
                 className={cn(

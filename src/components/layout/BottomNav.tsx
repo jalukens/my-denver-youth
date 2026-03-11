@@ -14,7 +14,7 @@ export function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-denver-gray-soft max-w-2xl mx-auto">
+    <nav className="fixed md:static bottom-0 left-0 right-0 z-50 bg-white border-t border-denver-gray-soft max-w-2xl mx-auto md:max-w-none md:shrink-0">
       <div className="flex items-end justify-around px-2 pb-2 pt-1">
         {navItems.map((item) => {
           const isActive =

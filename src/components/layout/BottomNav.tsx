@@ -15,7 +15,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed md:static bottom-0 left-0 right-0 z-50 bg-white border-t border-denver-gray-soft max-w-2xl mx-auto md:max-w-none md:shrink-0">
-      <div className="flex items-end justify-evenly px-1 pb-2 pt-1">
+      <div className="grid grid-cols-5 pb-2 pt-1">
         {navItems.map((item) => {
           const isActive =
             item.path === '/'
@@ -27,7 +27,7 @@ export function BottomNav() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex flex-col items-center gap-0.5 -mt-4 px-2"
+                className="flex flex-col items-center justify-end gap-0.5 -mt-4"
               >
                 <div
                   className={cn(
@@ -56,7 +56,7 @@ export function BottomNav() {
             <Link
               key={item.path}
               to={item.path}
-              className="flex flex-col items-center gap-0.5 pt-2 px-2"
+              className="flex flex-col items-center justify-end gap-0.5 pt-2"
             >
               <item.icon
                 className={cn(

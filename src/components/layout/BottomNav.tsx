@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { label: 'Home', icon: Home, path: '/' },
-  { label: 'Experiences', icon: Ticket, path: '/experiences' },
+  { label: 'Exp.', icon: Ticket, path: '/experiences' },
   { label: 'Explore', icon: Compass, path: '/explore', featured: true },
   { label: 'Funding', icon: Wallet, path: '/funding' },
   { label: 'Profile', icon: User, path: '/profile' },
@@ -15,7 +15,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed md:static bottom-0 left-0 right-0 z-50 bg-white border-t border-denver-gray-soft max-w-2xl mx-auto md:max-w-none md:shrink-0">
-      <div className="flex items-end pb-2 pt-1">
+      <div className="flex items-end justify-evenly px-1 pb-2 pt-1">
         {navItems.map((item) => {
           const isActive =
             item.path === '/'
@@ -27,16 +27,16 @@ export function BottomNav() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="flex-1 flex flex-col items-center gap-0.5 -mt-4"
+                className="flex flex-col items-center gap-0.5 -mt-4 px-2"
               >
                 <div
                   className={cn(
-                    'w-12 h-12 rounded-full bg-denver-amber flex items-center justify-center',
+                    'w-11 h-11 rounded-full bg-denver-amber flex items-center justify-center',
                     isActive && 'ring-2 ring-denver-amber/30'
                   )}
                   style={{ boxShadow: '0 4px 16px rgba(245,166,35,0.4)' }}
                 >
-                  <item.icon className="w-6 h-6 text-white" />
+                  <item.icon className="w-5 h-5 text-white" />
                 </div>
                 <span
                   className={cn(
@@ -56,7 +56,7 @@ export function BottomNav() {
             <Link
               key={item.path}
               to={item.path}
-              className="flex-1 flex flex-col items-center gap-0.5 pt-2"
+              className="flex flex-col items-center gap-0.5 pt-2 px-2"
             >
               <item.icon
                 className={cn(
